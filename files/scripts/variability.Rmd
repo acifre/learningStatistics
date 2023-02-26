@@ -1,0 +1,118 @@
+# Practice
+
+```{r}
+
+ch5ds1 <- read.csv("../data/05/ch5ds1.csv")
+
+# Range
+range <- max(ch5ds1$Reaction.Time) - min(ch5ds1$Reaction.Time)
+
+# Calculate mean
+mean <- mean(ch5ds1$Reaction.Time, na.rm = T)
+
+# Completing formula for variance 
+sum <- 0
+for (value in ch5ds1$Reaction.Time) {
+  num <- (value - mean(ch5ds1$Reaction.Time))^2
+  sum <- sum + num 
+}
+var <- sum / (length(ch5ds1$Reaction.Time) - 1)
+# var
+# var(ch5ds1$Reaction.Time) # checking result with built in function
+
+# SD is the sqrt of Var
+sd <-sqrt(var)
+
+print(list(range, var, sd))
+```
+
+
+# Exercises 
+
+5. For the following set of scores, compute the range, the unbiased and the biased standard deviations, and the variance. Do the exercise by hand.
+
+```{r}
+
+num_5 <- c(94, 86, 72, 69, 93, 79, 55, 88, 70, 93)
+
+n <- length(num_5)
+
+sum_mean <- 0
+
+for (value in num_5) {
+  sum_mean <- sum_mean + value
+}
+
+mean <- sum_mean / n
+
+sum_var <- 0
+
+for (value in num_5) {
+  num <- (value - mean)^2
+  sum_var <- sum_var + num
+}
+
+unbiased <- n - 1
+biased <- n 
+
+range <- max(num_5) - min(num_5)
+var_unbiased <- sum_var / unbiased
+sd_unbiased <- sqrt(var)
+
+var_biased <- sum_var / biased
+sd_biased <- sqrt(var_biased)
+
+# Answers
+
+print(paste0("Range: ", range))
+print(paste0("Variance Unbiased: ", var_unbiased))
+print(paste0("SD Unbiased: ", sd_unbiased))
+print(paste0("Variance Biased: ", var_biased))
+print(paste0("SD Biased: ", sd_biased))
+```
+6. In Question 5, why is the unbiased estimate greater than the biased estimate?
+
+- Because the unbiased estimate takes a more conservative approach by reducing the sample size by 1. As behavioral scientists, we want to err on the side of caution. 
+
+Using R, compute all of the measures of variability you can for height and weight.
+
+12. How can you tell whether R produces a biased or an unbiased estimate of the standard deviation?
+
+- By checking help for the function producing the estimate.
+
+13. Compute the biased and unbiased values of the standard deviation and variance for the set of accuracy scores shown in Chapter 5 Data Set 4 (ch5ds4.csv). Use R if you can; otherwise, do it by hand. Which one is smaller and why?
+
+```{r}
+
+num_13 <- read.csv("../data/05/ch5ds4.csv")
+
+mean <- mean(num_13$Accuracy)
+n <- length(num_13$Accuracy)
+
+sum_var <- 0
+
+for (value in num_13$Accuracy) {
+  num <- (value - mean)^2
+  sum_var <- sum_var + num
+}
+
+unbiased <- n - 1
+biased <- n 
+
+var_unbiased <- sum_var / unbiased
+sd_unbiased <- sqrt(var)
+
+var_biased <- sum_var / biased
+sd_biased <- sqrt(var_biased)
+
+# Answers
+print(paste0("Variance Unbiased: ", var_unbiased))
+print(paste0("SD Unbiased: ", sd_unbiased))
+print(paste0("Variance Biased: ", var_biased))
+print(paste0("SD Biased: ", sd_biased))
+```
+
+
+14. On a spelling test, the standard deviation is equal to 0.94. What does this mean?
+
+- This means that the average distance in scores from the mean for this sample is 0.94
