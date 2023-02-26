@@ -1,0 +1,8 @@
+# Exercises
+
+2. Compute the mean, median, and mode for the following three sets of scores in Chapter 4 Data Set 2 (ch4ds2.csv). Do it by hand or R. Show your work, and if you use R, print out a copy of the output from the R Console.
+
+```{r}
+
+```
+
