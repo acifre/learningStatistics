@@ -4,5 +4,44 @@
 
 ```{r}
 
+# Import
+num_2 <- read.csv("../data/04/ch4ds2.csv")
+
+# Mean
+mean(num_2$Score.1, na.rm = T)
+mean(num_2$Score.2, na.rm = T)
+mean(num_2$Score.3, na.rm = T)
+
+# Median
+median(num_2$Score.1)
+median(num_2$Score.2)
+median(num_2$Score.3)
+
+# Mode
+summary(as.factor(num_2$Score.1))
+summary(as.factor(num_2$Score.2))
+summary(as.factor(num_2$Score.3))
+
 ```
+
+3. Compute the means for the following set of scores in Chapter 4 Data Set 3 (ch4ds3.csv) using R. Print out a copy of the output from the R Console.
+
+```{r}
+
+num_3 <- read.csv("../data/04/ch4ds3.csv")
+
+mean(num_3$Number.of.Beds, na.rm = T)
+mean(num_3$Infection.Rate, na.rm = T)
+```
+
+
+```{r}
+
+num_10 <- read.csv("../data/04/ch4ds4.csv")
+
+mean(num_10[which(num_10$Group == 1), 2])
+mean(num_10[which(num_10$Group == 2), 2])
+mean(num_10[which(num_10$Group == 3), 2])
+```
+
 
